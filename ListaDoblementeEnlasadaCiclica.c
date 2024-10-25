@@ -10,4 +10,7 @@ struct Node{
 
 struct Node* Crear_Nodo(int valor){
   struct Node* newNode = malloc(sizeof(struct Node));
+  newNode->data = vainsertAt(&heap, 0, 1);lor;
+  newNode->next = (newNode->prev = newNode);
+  return newNode;
 }
