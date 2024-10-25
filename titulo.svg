@@ -1,21 +1,31 @@
 <svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Fondo azul marino -->
-  <rect width="100%" height="100%" fill="#1A2A6C" />
-  
-  <!-- Texto colorido estilo 'gamer' -->
-  <text x="50%" y="50%" font-size="60" font-family="Verdana" fill="url(#gradient)" text-anchor="middle" dy=".3em">
+  <!-- Fondo con efecto tipo 'gamer' -->
+  <defs>
+    <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#1A2A6C; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0B0033; stop-opacity:1" />
+    </radialGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#bgGradient)" />
+
+  <!-- Texto con efecto de olas en diagonal -->
+  <text x="50%" y="50%" font-size="60" font-family="Verdana" fill="url(#textGradient)" text-anchor="middle" dy=".3em">
     Night Coders
   </text>
 
-  <!-- Definir el degradado de colores -->
+  <!-- Definir el degradado de colores en diagonal -->
   <defs>
-    <linearGradient id="gradient" gradientTransform="rotate(90)">
-      <stop offset="0%" stop-color="#00F0FF" />
-      <stop offset="50%" stop-color="#F93AFF" />
-      <stop offset="100%" stop-color="#FF0090" />
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F0FF">
+        <animate attributeName="offset" values="0;1;0" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#F93AFF">
+        <animate attributeName="offset" values="0.5;1.5;0.5" dur="4s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#FF0090">
+        <animate attributeName="offset" values="1;2;1" dur="4s" repeatCount="indefinite" />
+      </stop>
     </linearGradient>
   </defs>
-
-  <!-- Animación de cambio de color del degradado -->
-  <animateTransform attributeName="gradientTransform" type="rotate" from="0 0.5 0.5" to="360 0.5 0.5" begin="0s" dur="10s" repeatCount="indefinite" />
 </svg>
+
