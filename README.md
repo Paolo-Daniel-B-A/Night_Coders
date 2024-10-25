@@ -1,7 +1,7 @@
 # Night_Coders
 
 <p align="center">
-  <img src="ruta/al/titulo.svg" alt="Night Coders">
+  <img src="titulo.svg" alt="Night Coders">
 </p>
 
 
