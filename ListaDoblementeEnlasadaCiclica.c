@@ -14,3 +14,8 @@ struct Node* Crear_Nodo(int valor){
   newNode->next = (newNode->prev = newNode);
   return newNode;
 }
+
+int main(){
+  struct Node* heap = Crear_Nodo(1);  
+  return 0;
+}
