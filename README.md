@@ -1,4 +1,3 @@
-# Night_Coders
 
 <!--  TITULO ANIMADO  -->
 <p align="center">
