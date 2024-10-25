@@ -1,8 +1,9 @@
 # Night_Coders
 
 <p align="center">
-  <img src="titulo.svg" alt="Night Coders">
+  <img src="titulo_olas_diagonal.svg" alt="Night Coders">
 </p>
+
 
 
 
