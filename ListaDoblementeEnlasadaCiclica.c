@@ -15,7 +15,27 @@ struct Node* Crear_Nodo(int valor){
   return newNode;
 }
 
+void Insert_Nodo(struct Node** headTemp, int valor){
+  struct Node* newNodo = Crear_Nodo(valor);
+  struct Node* temp = *headTemp;
+  if(temp==temp->next){
+    temp->next = newNodo;
+    newNodo->prev = temp;
+    newNodo->next = temp;
+    temp->prev = newNodo;
+  }
+}
+
 int main(){
-  struct Node* heap = Crear_Nodo(1);  
+  struct Node* head = Crear_Nodo(1);  
+  Insert_Nodo(&head, 2);
+  printf("%d", head->data);
+  printf("%d", head->next->data);
+  printf("%d", head->next->next->data);
+  //Imprimir(heap);
   return 0;
 }
+
+
+
+
