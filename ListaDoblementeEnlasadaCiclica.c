@@ -43,6 +43,7 @@ int main(){
   printf("%d", head->next->data);
   printf("%d", head->next->next->data);
   printf("%d", head->next->next->next->data);
+  printf("%d", head->next->next->next->next->data);
   //Imprimir(heap);
   return 0;
 }
