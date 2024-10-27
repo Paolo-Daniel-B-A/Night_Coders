@@ -32,6 +32,16 @@ void Insert_Nodo(struct Node** headTemp, int valor){
 
 }
 
+void Imprimir_LDEC(struct Node* headRef){
+  struct Node* temp = headRef->prev;
+  while(headRef!=temp){
+    printf("%d - ", headRef->data);
+    headRef=headRef->next;
+  }
+  printf("%d - ", headRef->data);
+  return;
+}
+
 int main(){
   struct Node* head = Crear_Nodo(1);  
   
@@ -44,7 +54,7 @@ int main(){
   printf("%d", head->next->next->data);
   printf("%d", head->next->next->next->data);
   printf("%d", head->next->next->next->next->data);
-  //Imprimir(heap);
+  Imprimir_LDEC(head);
   return 0;
 }
 
