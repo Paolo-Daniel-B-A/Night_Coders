@@ -32,6 +32,30 @@ void Insert_Nodo(struct Node** headTemp, int valor){
 
 }
 
+void Insert_Posicion(struct Node** headTemp, int valor, int posicion){
+  struct Node* newNodo = Crear_Nodo(valor);
+  struct Node* temp = *headTemp;
+  struct Node* temp_2 = *headTemp;
+  if(temp == temp->next){
+    newNodo->next = temp;
+    newNodo->prev = temp;
+    temp->next = newNodo;
+    temp->prev = newNodo;
+    return;
+  }
+  for(int i=0; i<(posicion-1); i++){
+    temp_2 = temp_2->next;
+    temp = temp->next;
+  }
+  temp_2=temp_2->next;
+
+  newNodo->next = temp_2;
+  newNodo->prev = temp;
+  temp->next = newNodo;
+  temp_2->prev = newNodo;
+  
+}
+
 void Imprimir_LDEC(struct Node* headRef){
   struct Node* temp = headRef->prev;
   while(headRef!=temp){
@@ -54,6 +78,9 @@ int main(){
   printf("%d", head->next->next->data);
   printf("%d", head->next->next->next->data);
   printf("%d", head->next->next->next->next->data);
+  Imprimir_LDEC(head);
+  Insert_Posicion(&head, 5, 3);
+  printf("pos: \n");
   Imprimir_LDEC(head);
   return 0;
 }
