@@ -56,6 +56,18 @@ void Insert_Posicion(struct Node** headTemp, int valor, int posicion){
   
 }
 
+void Borrar_LDEC(struct Node** headTemp){
+  struct Node* temp = *headTemp;
+  struct Node* temp2 = temp->prev;
+  while(temp!=temp2){
+    printf("%d - ",temp->data);
+    free(temp);
+    temp=temp->next;
+  }
+  *headTemp = NULL;
+  //free(temp);
+}
+
 void Imprimir_LDEC(struct Node* headRef){
   struct Node* temp = headRef->prev;
   while(headRef!=temp){
@@ -71,7 +83,7 @@ int main(){
   
   Insert_Nodo(&head, 2);
   Insert_Nodo(&head, 3);
-  Insert_Nodo(&head, 4);
+  //Insert_Nodo(&head, 4);
 
   printf("%d", head->data);
   printf("%d", head->next->data);
@@ -81,6 +93,9 @@ int main(){
   Imprimir_LDEC(head);
   Insert_Posicion(&head, 5, 3);
   printf("pos: \n");
+  Imprimir_LDEC(head);
+  Borrar_LDEC(&head);
+  printf("borr:\n");
   Imprimir_LDEC(head);
   return 0;
 }
