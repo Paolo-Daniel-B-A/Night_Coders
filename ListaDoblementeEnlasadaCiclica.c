@@ -57,18 +57,27 @@ void Insert_Posicion(struct Node** headTemp, int valor, int posicion){
 }
 
 void Borrar_LDEC(struct Node** headTemp){
-  struct Node* temp = *headTemp;
-  struct Node* temp2 = temp->prev;
-  while(temp!=temp2){
-    printf("%d - ",temp->data);
-    free(temp);
-    temp=temp->next;
-  }
+  struct Node* CopiaNodoActual = *headTemp;
+  struct Node* nextNode;
+  
+  do{
+    nextNode = CopiaNodoActual->next;
+    printf("%d - ",CopiaNodoActual->data);
+    free(CopiaNodoActual);
+    CopiaNodoActual=nextNode;
+    //temp=temp->next;
+  }while(CopiaNodoActual!=*headTemp);
+  
   *headTemp = NULL;
   //free(temp);
 }
 
 void Imprimir_LDEC(struct Node* headRef){
+  
+  if(headRef==NULL){
+    printf("Lista vacia.\n");
+    return;
+  }
   struct Node* temp = headRef->prev;
   while(headRef!=temp){
     printf("%d - ", headRef->data);
