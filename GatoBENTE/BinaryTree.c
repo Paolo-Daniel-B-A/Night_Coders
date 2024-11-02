@@ -34,14 +34,52 @@ struct Node* Insert(struct Node* rootTemp, int valor){
   return rootTemp;
 }
 
-struct Node* Size(struct Node* rootTemp){
+int Size(struct Node* rootTemp){
   if(rootTemp == NULL){
-    return;
+    return 0;
   }
-
+  return 1+Size(rootTemp->left)+Size(rootTemp->right);
 }
 
-int main(){
+struct Node* Imprimir(struct Node* rootTemp){
   return 0;
 }
+
+int MaxDepth(struct Node* rootTemp){
+  if(rootTemp==NULL) return 0;
+  int maxIzq = 1+MaxDepth(rootTemp->left);
+  int maxDer = 1+MaxDepth(rootTemp->right);
+  if(maxIzq > maxDer) return maxIzq;
+  else return maxDer;
+}
+
+int MinValue(struct Node* rootTemp){
+  if(rootTemp == NULL) return 0;
+  if(rootTemp->left == NULL) return 0;
+  MinValue(rootTemp->left);
+  return rootTemp->data;
+}
+
+//int MaxValue(struct Node*); 
+
+int main(){
+  struct Node* rootTree = Buil123();
+  Insert(rootTree, 5);
+  printf("%d\n",rootTree->data);
+  printf("%d\n",rootTree->data);
+  printf("%d\n",rootTree->left->data);
+
+  printf("alturamax: %d \n",MaxDepth(rootTree));
+  printf("Total nodos: %d \n", Size(rootTree));
+  printf("Min dato: %d \n", MinValue(rootTree));
+  return 0;
+}
+
+
+
+
+
+
+
+
 
