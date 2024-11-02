@@ -55,12 +55,15 @@ int MaxDepth(struct Node* rootTemp){
 
 int MinValue(struct Node* rootTemp){
   if(rootTemp == NULL) return 0;
-  if(rootTemp->left == NULL) return 0;
-  MinValue(rootTemp->left);
-  return rootTemp->data;
+  if(rootTemp->left== NULL) return rootTemp->data;
+  return MinValue(rootTemp->left);
 }
 
-//int MaxValue(struct Node*); 
+int MaxValue(struct Node* rootTemp){
+  if(rootTemp == NULL) return 0;
+  if(rootTemp->right == NULL) return rootTemp->data;
+  return MaxValue(rootTemp->right);
+}
 
 int main(){
   struct Node* rootTree = Buil123();
@@ -72,6 +75,7 @@ int main(){
   printf("alturamax: %d \n",MaxDepth(rootTree));
   printf("Total nodos: %d \n", Size(rootTree));
   printf("Min dato: %d \n", MinValue(rootTree));
+  printf("Min dato: %d \n", MaxValue(rootTree));
   return 0;
 }
 
