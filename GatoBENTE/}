@@ -80,7 +80,7 @@ int MaxValueWhile(struct Node* rootTemp){
   }  
   return rootTemp->data;
 }
-
+/*
 void PrintTree(struct Node* rootTemp){
   if(rootTemp == NULL) return;
   printf("%d \n",rootTemp->data);
@@ -92,26 +92,12 @@ void PrintTree(struct Node* rootTemp){
   PrintTree(rootTemp->left);
   PrintTree(rootTemp->right);
 }
-
-void PrintIn_Orden(struct Node* rootTemp){
-  if(rootTemp == NULL) return;
-  PrintIn_Orden(rootTemp->left);
-  printf("%d ",rootTemp->data);
-  PrintIn_Orden(rootTemp->right);
-}
-
-void PrintPost_Orden(struct Node* rootTemp){
-  if(rootTemp == NULL) return;
-  PrintPost_Orden(rootTemp->left);
-  PrintPost_Orden(rootTemp->right);
-  printf("%d ",rootTemp->data);
-}
-
-void PrintPre_Orden(struct Node* rootTemp){
-  if(rootTemp == NULL) return;
-  printf("%d ",rootTemp->data);
-  PrintPre_Orden(rootTemp->left);
-  PrintPre_Orden(rootTemp->right);
+*/
+void PrintTree(struct Node* node) {
+if (node == NULL) return;
+PrintTree(node->left);
+printf("%d ", node->data);
+PrintTree(node->right);
 }
 
 int main(){
@@ -127,13 +113,7 @@ int main(){
   printf("Min while dato: %d \n", MinValueWhile(rootTree));
   printf("Max dato: %d \n", MaxValue(rootTree));
   printf("Max while dato: %d \n", MaxValueWhile(rootTree));
-  //PrintTree(rootTree);
-  printf("\n In-Orden: ");
-  PrintIn_Orden(rootTree);
-  printf("\n Pos-Orden: ");
-  PrintPost_Orden(rootTree);
-  printf("\n Pre-Orden: ");
-  PrintPre_Orden(rootTree);
+  PrintTree(rootTree);
   return 0;
 }
 

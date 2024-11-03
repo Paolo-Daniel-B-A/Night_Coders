@@ -21,6 +21,18 @@ int MinValue(struct Node*);
 
 int MaxValue(struct Node*); 
 
+int MinValueWhile(struct Node*);
+
+int MaxValueWhile(struct Node*);
+
+void PrintTree(struct Node*);
+
+void PrintIn_Orden(struct Node*);
+
+void PrintPost_Orden(struct Node*);
+
+void PrintPre_Orden(struct Node*);
+
 #endif
 
 
