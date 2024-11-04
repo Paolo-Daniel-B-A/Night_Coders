@@ -37,6 +37,8 @@ int HasPathSum(struct Node*, int);
 
 void BorrarTree(struct Node**);
 
+void BorrarDato(struct Node**,int);
+
 #endif
 
 

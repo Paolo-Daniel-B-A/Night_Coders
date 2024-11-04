@@ -127,15 +127,33 @@ int HasPathSum(struct Node* rootTemp, int suma){
 
 void BorrarTree(struct Node** root){
   if(*root == NULL) return ;
-  //struct Node* siguienteLeft = root->left;
-  //struct Node* siguienteRight = root->right;
-  //free(root);
-  //BorrarTree(siguienteLeft);
-  //BorrarTree(siguienteRight);
   BorrarTree(&((*root)->left));
   BorrarTree(&((*root)->right));
   //free(*root);
   *root=NULL;
+}
+
+void BorrarDato(struct Node** rootTemp, int valor){
+  if(*rootTemp == NULL) return;
+  if(valor < (*rootTemp)->data) BorrarDato(&((*rootTemp)->left),valor);
+  else if(valor > (*rootTemp)->data) BorrarDato(&((*rootTemp)->right),valor);
+  else{
+    if((*rootTemp)->left == NULL && (*rootTemp)->right == NULL){
+      *rootTemp = NULL;
+    }
+    //falta la asignacion del herencia
+    else if((*rootTemp)->left != NULL || (*rootTemp)->right != NULL){
+      if((*rootTemp)->left == NULL) *rootTemp = (*rootTemp)->right;
+      else *rootTemp = (*rootTemp)->left;
+    }
+    else{
+      //buscar al sucesor de rootTemp ????
+      int minval = MinValue((*rootTemp)->right);
+      (*rootTemp)->data = minval;
+      BorrarDato(&((*rootTemp)->right), minval);
+    }
+  }
+  return ;
 }
 
 int main(){
@@ -160,8 +178,12 @@ int main(){
   PrintPre_Orden(rootTree);
   printf("suma es: %d \n",HasPathSum(rootTree, 1));
   printf("inicio de borrado. \n");
-  BorrarTree(&rootTree);
+  //BorrarTree(&rootTree);
   printf("fin borrado. \n");
+  PrintIn_Orden(rootTree);
+  printf("borrar nodo 3:\n");
+  BorrarDato(&rootTree, 3);
+  BorrarDato(&rootTree, 2);
   PrintIn_Orden(rootTree);
   return 0;
 }
