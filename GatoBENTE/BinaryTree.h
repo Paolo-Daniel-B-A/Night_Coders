@@ -33,6 +33,10 @@ void PrintPost_Orden(struct Node*);
 
 void PrintPre_Orden(struct Node*);
 
+int HasPathSum(struct Node*, int);
+
+void BorrarTree(struct Node**);
+
 #endif
 
 

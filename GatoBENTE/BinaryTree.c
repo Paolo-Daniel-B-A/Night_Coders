@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "BinaryTree.h"
+#include "BinaryTree.h" 
 
 struct Node* CrearNode(int valor){
   struct Node* newNode = malloc(sizeof(struct Node));
@@ -114,6 +114,30 @@ void PrintPre_Orden(struct Node* rootTemp){
   PrintPre_Orden(rootTemp->right);
 }
 
+int sumador = 0;
+
+int HasPathSum(struct Node* rootTemp, int suma){
+  if(rootTemp == NULL) return 0;
+  //int sumador = 0; 
+  sumador = sumador + rootTemp->data;
+  if(rootTemp->left == NULL) HasPathSum(rootTemp->right, suma);
+  HasPathSum(rootTemp->left, suma);
+  return sumador;
+}
+
+void BorrarTree(struct Node** root){
+  if(*root == NULL) return ;
+  //struct Node* siguienteLeft = root->left;
+  //struct Node* siguienteRight = root->right;
+  //free(root);
+  //BorrarTree(siguienteLeft);
+  //BorrarTree(siguienteRight);
+  BorrarTree(&((*root)->left));
+  BorrarTree(&((*root)->right));
+  //free(*root);
+  *root=NULL;
+}
+
 int main(){
   struct Node* rootTree = Buil123();
   Insert(rootTree, 5);
@@ -134,8 +158,14 @@ int main(){
   PrintPost_Orden(rootTree);
   printf("\n Pre-Orden: ");
   PrintPre_Orden(rootTree);
+  printf("suma es: %d \n",HasPathSum(rootTree, 1));
+  printf("inicio de borrado. \n");
+  BorrarTree(&rootTree);
+  printf("fin borrado. \n");
+  PrintIn_Orden(rootTree);
   return 0;
 }
+
 
 
 
