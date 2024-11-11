@@ -185,6 +185,7 @@ int main(){
   BorrarDato(&rootTree, 3);
   BorrarDato(&rootTree, 2);
   PrintIn_Orden(rootTree);
+  PrintIn_Orden(rootTree);
   return 0;
 }
 
